@@ -24,6 +24,17 @@ type Project = {
 
 const projects: Project[] = [
   {
+    title: 'GenSathi - Civic Complaint Management Platform',
+    shortDesc: 'A modern platform connecting citizens and city administrators for real-time civic engagement and issue reporting.',
+    fullDesc:
+      'A platform built with Next.js, React, and Firebase. Features smart duplicate detection using Haversine distance, a gamified XP system, real-time updates via Firestore, proof-based resolution, and community upvoting.',
+    tech: ['Next.js', 'React', 'Firebase', 'Tailwind CSS'],
+    category: ['web'],
+    icon: Globe,
+    github: 'https://github.com/harshith-kumar4452/Spirit.git',
+    demo: 'https://spirit-rho.vercel.app/',
+  },
+  {
     title: 'Trevia – AI Powered Smart Tourism Platform',
     shortDesc: 'An AI-powered tourism platform with personalized travel recommendations.',
     fullDesc:
@@ -31,7 +42,8 @@ const projects: Project[] = [
     tech: ['Next.js', 'React', 'API Integration', 'AI'],
     category: ['web', 'ai'],
     icon: Globe,
-    github: 'https://github.com/harshith-kumar4452',
+    github: 'https://github.com/harshith-kumar4452/trevia-master',
+    demo: 'https://trevia-india.vercel.app/',
   },
   {
     title: 'Telugu Movie Guessing Game',
