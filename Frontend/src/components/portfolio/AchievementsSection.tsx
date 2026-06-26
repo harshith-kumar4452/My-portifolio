@@ -3,19 +3,19 @@ import { Trophy } from 'lucide-react';
 
 const achievements = [
     {
-        title: 'Hackathon Winner',
-        description: 'Secured 1st place in the National level Smart India Hackathon for developing an AI-driven predictive healthcare system.',
-        year: '2023',
+        title: 'Runner-Up — VJ Hackathon 2025',
+        description: 'Secured Runner-Up position at VJ Hackathon 2025, organized by CSI, VNRVJIET. Competed among top engineering teams in a high-stakes technical challenge.',
+        year: 'Oct 2025',
     },
     {
-        title: 'Top 100 on LeetCode',
-        description: 'Ranked in the top 100 globally in LeetCode weekly contests, demonstrating strong problem-solving and algorithmic skills.',
-        year: '2024',
+        title: '1st Place — CONVERGENCE 2K25',
+        description: 'Won 1st Place in the Project Contest (Software) at CONVERGENCE 2K25, a National Technical Symposium hosted at VNRVJIET.',
+        year: 'Nov 2025',
     },
     {
-        title: 'Open Source Contributor',
-        description: 'Recognized for significant contributions to major open-source repositories in the React and Node.js ecosystems.',
-        year: '2024',
+        title: '2nd Place — SynthVision Hackathon',
+        description: 'Secured 2nd place at the SynthVision Hackathon, part of AI Week organized by Krithomedh at VNRVJIET, demonstrating strong AI-driven solution building.',
+        year: 'Feb 2026',
     },
 ];
 

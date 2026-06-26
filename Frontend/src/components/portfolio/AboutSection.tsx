@@ -3,9 +3,9 @@ import { Code2, Layers, Clock } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const stats = [
-  { icon: Code2, label: 'Projects Built', value: 10 },
-  { icon: Layers, label: 'Technologies Learned', value: 15 },
-  { icon: Clock, label: 'Years of Learning', value: 3 },
+  { icon: Code2, label: 'Projects Built', value: 3 },
+  { icon: Layers, label: 'Technologies Learned', value: 20 },
+  { icon: Clock, label: 'Years of Learning', value: 2 },
 ];
 
 function CountUp({ target, active }: { target: number; active: boolean }) {
@@ -46,10 +46,11 @@ export function AboutSection() {
             }`}
         >
           <p className="text-muted-foreground text-lg leading-relaxed">
-            I am a Computer Science student specializing in Data Science, passionate about building
-            intelligent systems and modern web applications. I enjoy solving real-world problems
-            using programming, AI, and data analytics. My goal is to create impactful technology
-            solutions that make a difference in people's lives.
+            A Computer Science undergraduate majoring in Data Science, equipped with core skills in
+            machine learning, full-stack engineering, and software architecture. Skilled at developing
+            AI-driven applications that scale across both web and mobile environments. Driven by a
+            desire to solve practical problems through intelligent, efficient systems, and currently
+            pursuing a Software Engineer position to contribute toward impactful technology solutions.
           </p>
         </div>
 

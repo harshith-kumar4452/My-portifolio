@@ -4,23 +4,23 @@ import { GraduationCap } from 'lucide-react';
 const entries = [
   {
     title: 'VNR Vignana Jyothi Institute of Engineering & Technology',
-    subtitle: 'B.Tech CSE (Hons) – Data Science',
-    detail: 'CGPA: 9.1 | Graduation Year: 2028',
+    subtitle: 'B.Tech CSE (Hons) – Data Science · Hyderabad, Telangana',
+    detail: 'CGPA: 9.1 | 2024–2028',
   },
   {
     title: 'IIT Madras',
-    subtitle: 'Online BS Degree in Data Science & Applications',
-    detail: '',
+    subtitle: 'B.S. in Data Science and Applications (Diploma Level)',
+    detail: 'CGPA: 8.2',
   },
   {
     title: 'Viswasanthi E.M High School',
-    subtitle: 'Intermediate (CBSE PCM)',
-    detail: '91.8%',
+    subtitle: 'Intermediate CBSE (PCM) · Vuyyuru, Andhra Pradesh',
+    detail: '91.8% · July 2024',
   },
   {
-    title: 'Matriculation',
-    subtitle: 'CBSE',
-    detail: '95.6%',
+    title: 'Viswasanthi E.M High School',
+    subtitle: 'Matriculation (CBSE) · Vuyyuru, Andhra Pradesh',
+    detail: '95.6% · May 2022',
   },
 ];
 

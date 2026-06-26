@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog';
-import { ExternalLink, Github, Globe, Brain, Terminal } from 'lucide-react';
+import { ExternalLink, Github, Globe, Brain } from 'lucide-react';
 
 type Project = {
   title: string;
@@ -24,50 +24,39 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: 'GenSathi - Civic Complaint Management Platform',
-    shortDesc: 'A modern platform connecting citizens and city administrators for real-time civic engagement and issue reporting.',
+    title: 'AgriChain – Blockchain Agricultural Supply Chain',
+    shortDesc: 'A blockchain-enabled agricultural supply chain traceability platform with role-based access for Farmers, Aggregators, Retailers, and Consumers.',
     fullDesc:
-      'A platform built with Next.js, React, and Firebase. Features smart duplicate detection using Haversine distance, a gamified XP system, real-time updates via Firestore, proof-based resolution, and community upvoting.',
-    tech: ['Next.js', 'React', 'Firebase', 'Tailwind CSS'],
+      'Engineered a blockchain-enabled agricultural supply chain traceability platform with role-based access for Farmers, Aggregators, Retailers, and Consumers. Implemented QR-based batch creation and real-time camera scanning to log trace events (transport, processing, storage, retail) across the supply chain. Connected Solidity smart contracts on the Polygon testnet via ethers.js to provide optional tamper-proof blockchain verification of product history.',
+    tech: ['Next.js', 'React', 'TypeScript', 'Firebase', 'Solidity', 'ethers.js', 'Polygon'],
+    category: ['web', 'blockchain'],
+    icon: Globe,
+    github: 'https://github.com/harshith-kumar4452',
+  },
+  {
+    title: 'GenSathi – Civic Complaint Management Platform',
+    shortDesc: 'A civic engagement platform connecting citizens and city administrators for real-time issue reporting, tracking, and resolution.',
+    fullDesc:
+      'Developed a civic engagement platform connecting citizens and city administrators for real-time issue reporting, tracking, and resolution. Built a smart duplicate-detection system using the Haversine distance formula to flag similar complaints within a 150m radius. Designed an XP-based gamification and community upvoting engine to prioritize critical issues, paired with proof-based (before/after photo) resolution workflows for admins.',
+    tech: ['Next.js', 'React', 'Firebase Firestore', 'Tailwind CSS', 'Leaflet'],
     category: ['web'],
     icon: Globe,
     github: 'https://github.com/harshith-kumar4452/Spirit.git',
     demo: 'https://spirit-rho.vercel.app/',
   },
   {
-    title: 'Trevia – AI Powered Smart Tourism Platform',
-    shortDesc: 'An AI-powered tourism platform with personalized travel recommendations.',
+    title: 'CampusPocket – Mobile EdTech Platform',
+    shortDesc: 'A full-stack mobile EdTech platform connecting schools, parents, and students with real-time academic insights and AI-powered tools.',
     fullDesc:
-      'An AI-powered tourism platform that provides personalized travel recommendations using external APIs and intelligent itinerary suggestions. Features include smart destination search, budget planning, and interactive maps.',
-    tech: ['Next.js', 'React', 'API Integration', 'AI'],
-    category: ['web', 'ai'],
-    icon: Globe,
-    github: 'https://github.com/harshith-kumar4452/trevia-master',
-    demo: 'https://trevia-india.vercel.app/',
-  },
-  {
-    title: 'Telugu Movie Guessing Game',
-    shortDesc: 'A CLI-based movie guessing game with multiplayer mode and scoring.',
-    fullDesc:
-      'A CLI based movie guessing game inspired by Hangman featuring multiplayer mode, dynamic scoring system, hints, and similarity detection. Built entirely in Python with an engaging user experience.',
-    tech: ['Python', 'CLI', 'Game Logic'],
-    category: ['python'],
-    icon: Terminal,
-    github: 'https://github.com/harshith-kumar4452',
-  },
-  {
-    title: 'Voice Controlled AI Assistant',
-    shortDesc: 'An AI assistant capable of voice commands for various tasks.',
-    fullDesc:
-      'An AI assistant capable of voice commands for playing music, checking weather, opening websites, telling jokes, and sending WhatsApp messages. Uses speech recognition and text-to-speech synthesis.',
-    tech: ['Python', 'Speech Recognition', 'AI', 'APIs'],
-    category: ['python', 'ai'],
+      'Built a full-stack mobile EdTech platform connecting schools, parents, and students with real-time academic insights, automated scheduling, and performance analytics. Engineered a custom Linear Regression Growth Modeling (LRGM) algorithm to analyze multi-year academic data and predict student performance trends. Integrated an AI-powered curriculum chatbot and parent performance summaries via Groq API, using minimal RAG and 24-hour response caching to cut token usage and API costs.',
+    tech: ['React Native', 'Expo', 'Supabase', 'PostgreSQL', 'Groq API', 'NativeWind'],
+    category: ['mobile', 'ai'],
     icon: Brain,
     github: 'https://github.com/harshith-kumar4452',
   },
 ];
 
-const filters = ['All', 'Web', 'AI', 'Python'];
+const filters = ['All', 'Web', 'AI', 'Mobile', 'Blockchain'];
 
 export function ProjectsSection() {
   const { ref, isInView } = useInView(0.1);
