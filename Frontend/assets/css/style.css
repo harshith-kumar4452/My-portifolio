@@ -9,8 +9,8 @@
   --fg: #111111;
   --muted: #6b6b68;
   --line: #e4e4e0;
-  --accent: #ff5a36;
-  --accent-soft: rgba(255, 90, 54, 0.12);
+  --accent: #0f9488;
+  --accent-soft: rgba(15, 148, 136, 0.12);
   --ok: #1f9d55;
   --err: #d64545;
   --card: #ffffff;
@@ -30,8 +30,8 @@
   --fg: #ededeb;
   --muted: #8d8d89;
   --line: #232323;
-  --accent: #ff6a48;
-  --accent-soft: rgba(255, 106, 72, 0.14);
+  --accent: #2dd4bf;
+  --accent-soft: rgba(45, 212, 191, 0.14);
   --card: #111111;
   --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
   color-scheme: dark;
@@ -375,13 +375,13 @@ main { display: block; }
 .loader-name .word { display: inline-flex; overflow: hidden; padding-bottom: .08em; }
 .loader-name .ch { display: inline-block; transform: translateY(110%); animation: chUp .9s var(--ease) forwards; }
 @keyframes chUp { to { transform: none; } }
-.loader-name .dot { color: #ff5a36; }
+.loader-name .dot { color: #2dd4bf; }
 .loader-sub { margin-top: 20px; font-family: var(--mono); font-size: 12px; color: #8d8d89; letter-spacing: .08em; display: flex; justify-content: space-between; gap: 12px; text-transform: uppercase; }
 .loader-sub .phase { min-height: 1.4em; }
 .loader-track { margin-top: 14px; height: 1px; background: #262626; overflow: hidden; }
-.loader-fill { height: 100%; width: 100%; background: #ff5a36; transform-origin: 0 50%; transform: scaleX(0); }
+.loader-fill { height: 100%; width: 100%; background: #2dd4bf; transform-origin: 0 50%; transform: scaleX(0); }
 .loader-count { position: absolute; right: clamp(16px, 4vw, 40px); bottom: clamp(16px, 4vw, 32px); z-index: 2; font-family: var(--mono); font-size: clamp(56px, 14vw, 140px); font-weight: 500; line-height: .8; letter-spacing: -.06em; color: #f2f2ef; transition: opacity .3s; }
-.loader-count span { color: #ff5a36; font-size: .3em; letter-spacing: 0; vertical-align: top; }
+.loader-count span { color: #2dd4bf; font-size: .3em; letter-spacing: 0; vertical-align: top; }
 .loader-meta { position: absolute; left: clamp(16px, 4vw, 40px); bottom: clamp(16px, 4vw, 32px); z-index: 2; font-family: var(--mono); font-size: 11px; color: #6b6b68; line-height: 1.7; transition: opacity .3s; }
 .loader-grid { position: absolute; inset: 0; z-index: 1; background-image: linear-gradient(#ffffff08 1px, transparent 1px), linear-gradient(90deg, #ffffff08 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%); transition: opacity .4s; }
 .loader.done .loader-count, .loader.done .loader-meta, .loader.done .loader-grid { opacity: 0; }
