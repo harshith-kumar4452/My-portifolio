@@ -10,12 +10,12 @@
     name: "Kakkirala Harshith Kumar",
     email: "harshithkumar4452@gmail.com",
     // Add your number in international format to show a clickable "Call" link everywhere, e.g. "+91 98765 43210"
-    phone: "",
+    phone: "+91 74160 02298",
     location: "Hyderabad, India",
     resume: "/assets/Harshith_Resume.pdf",
     github: "https://github.com/harshith-kumar4452",
     linkedin: "https://linkedin.com/in/kakkirala-harshithkumar",
-    leetcode: "https://leetcode.com/u/user9425Wn/",
+    leetcode: "https://leetcode.com/u/harshith_1510_/",
     // Optional: a Formspree / Getform endpoint to receive contact-form messages directly.
     // Leave empty to fall back to opening the visitor's mail app with the message pre-filled.
     formEndpoint: ""
