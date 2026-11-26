@@ -18,9 +18,9 @@
   --radius: 14px;
   --maxw: 1080px;
   --gutter: clamp(16px, 4vw, 32px);
-  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --serif: "Playfair Display", Didot, "Bodoni 72", Georgia, serif;
-  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font: var(--font-inter), "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --serif: var(--font-playfair), "Playfair Display", Didot, "Bodoni 72", Georgia, serif;
+  --mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --ease: cubic-bezier(.22, 1, .36, 1);
   color-scheme: light;
 }
@@ -389,7 +389,8 @@ main { display: block; }
 .loader.done .loader-count, .loader.done .loader-meta, .loader.done .loader-grid { opacity: 0; }
 .loader.gone { display: none; }
 /* quick page transition loader for repeat navigations */
-.loader.quick .loader-inner, .loader.quick .loader-count, .loader.quick .loader-meta { display: none; }
+.loader.quick .loader-inner, .loader.quick .loader-count, .loader.quick .loader-meta,
+html[data-seen] .loader .loader-inner, html[data-seen] .loader .loader-count, html[data-seen] .loader .loader-meta { display: none; }
 
 /* ==========================================================
    TOUR

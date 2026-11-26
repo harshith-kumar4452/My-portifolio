@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://my-portifolio-six-tau.vercel.app/sitemap.xml
