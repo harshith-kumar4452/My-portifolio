@@ -75,7 +75,7 @@
   function renderHeader() {
     const slot = $("#site-header");
     if (!slot) return;
-    const links = NAV.map(n => `<li><a href="${n.href}"${isActive(n.href) ? ' aria-current="page"' : ""}>${n.label}</a></li>`).join("");
+    const links = NAV.map(n => `<li><a href="${n.href}"${isActive(n.href) ? ' aria-current="page"' : ""}><span class="roll" data-t="${n.label}">${n.label}</span></a></li>`).join("");
     const mlinks = NAV.map((n, i) => `<li style="transition-delay:${0.04 * i + 0.05}s"><a href="${n.href}"${isActive(n.href) ? ' aria-current="page"' : ""}>${n.label}<span class="idx">0${i + 1}</span></a></li>`).join("");
     slot.outerHTML = `
       <a class="skip" href="#main">Skip to content</a>
@@ -157,10 +157,11 @@
     const bar = $(".progress-bar");
     const onScroll = () => {
       header && header.classList.toggle("scrolled", window.scrollY > 8);
-      if (bar) {
-        const h = document.documentElement.scrollHeight - innerHeight;
-        bar.style.transform = `scaleX(${h > 0 ? Math.min(1, scrollY / h) : 0})`;
-      }
+      const h = document.documentElement.scrollHeight - innerHeight;
+      const p = h > 0 ? Math.min(1, scrollY / h) : 0;
+      if (bar) bar.style.transform = `scaleX(${p})`;
+      const th = $(".thread");
+      if (th) { $("i", th).style.transform = `scaleY(${p})`; $("b", th).style.top = `calc(${p * 100}% - 3px)`; }
     };
     addEventListener("scroll", onScroll, { passive: true });
     onScroll();
@@ -545,11 +546,85 @@
     show();
   }
 
+  /* ==========================================================
+     MOTION LAYER: thread, cursor, tilt, magnetic buttons
+     ========================================================== */
+  function bindFx() {
+    // scroll thread (CSS shows it only on wide screens)
+    const thread = document.createElement("div");
+    thread.className = "thread"; thread.setAttribute("aria-hidden", "true");
+    thread.innerHTML = "<i></i><b></b>";
+    document.body.appendChild(thread);
+
+    if (reduced) return;
+    const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (!fine) return;
+
+    // 3D tilt targets
+    $$(".card:not(.chart-card):not(.gh-card), .hero-photo").forEach(el => el.classList.add("tilt"));
+    // magnetic buttons
+    $$(".hero-cta .btn, .cta-band .btn").forEach(el => el.classList.add("mag"));
+
+    // cursor elements
+    document.body.classList.add("fx-on");
+    const mk = (id, html) => { const d = document.createElement("div"); d.id = id; d.setAttribute("aria-hidden", "true"); if (html) d.innerHTML = html; document.body.appendChild(d); return d; };
+    const glow = mk("cglow"), ring = mk("cring", "<i></i>"), dot = mk("cdot");
+    const label = $("i", ring);
+    let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my, gx = mx, gy = my, live = false;
+
+    addEventListener("mousemove", (e) => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.transform = `translate3d(${mx}px,${my}px,0)`;
+      if (!live) { live = true; rx = gx = mx; ry = gy = my; document.body.classList.add("fx-live"); }
+    }, { passive: true });
+    document.addEventListener("mouseleave", () => { live = false; document.body.classList.remove("fx-live"); });
+
+    const loop = () => {
+      rx += (mx - rx) * 0.16; ry += (my - ry) * 0.16;
+      gx += (mx - gx) * 0.07; gy += (my - gy) * 0.07;
+      ring.style.transform = `translate3d(${rx}px,${ry}px,0)`;
+      glow.style.transform = `translate3d(${gx - 260}px,${gy - 260}px,0)`;
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+
+    document.addEventListener("mouseover", (e) => {
+      const t = e.target.closest ? e.target : e.target.parentElement;
+      const view = t.closest("a.link-row, .project");
+      const hot = t.closest("a, button, .card, [data-copy], label");
+      ring.classList.toggle("view", !!view);
+      ring.classList.toggle("hot", !!hot && !view);
+      label.textContent = view ? "VIEW" : "";
+    });
+
+    // tilt + magnet via delegation
+    document.addEventListener("mousemove", (e) => {
+      const tl = e.target.closest && e.target.closest(".tilt");
+      if (tl) {
+        const r = tl.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        tl.style.setProperty("--py", (x * 10).toFixed(2) + "deg");
+        tl.style.setProperty("--px", (-y * 8).toFixed(2) + "deg");
+      }
+      $$(".mag").forEach(b => {
+        const r = b.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+        const dx = e.clientX - cx, dy = e.clientY - cy;
+        if (Math.hypot(dx, dy) < Math.max(r.width, r.height) * 0.8) b.style.translate = `${(dx * 0.25).toFixed(1)}px ${(dy * 0.35).toFixed(1)}px`;
+        else if (b.style.translate) b.style.translate = "";
+      });
+    }, { passive: true });
+    document.addEventListener("mouseout", (e) => {
+      const tl = e.target.closest && e.target.closest(".tilt");
+      if (tl && !tl.contains(e.relatedTarget)) { tl.style.setProperty("--px", "0deg"); tl.style.setProperty("--py", "0deg"); }
+    });
+  }
+
   /* ---------------- Boot ---------------- */
   function boot() {
     renderHeader();
     renderFooter();
     bindHeader();
+    bindFx();
     bindTyped();
     bindFilters();
     bindCopy();
