@@ -46,24 +46,19 @@ export function ContactForm() {
     const data = { name: values.name.trim(), email: values.email.trim(), message: values.message.trim() };
     setLoading(true);
     try {
-      if (SITE.formEndpoint) {
-        const res = await fetch(SITE.formEndpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(data),
-        });
-        if (!res.ok) throw new Error("Request failed");
-        setStatus({ kind: "ok", msg: `Thanks ${data.name.split(" ")[0]}! Your message was sent — I'll reply within 24–48 hours.` });
-      } else {
-        const subject = encodeURIComponent(`Portfolio enquiry from ${data.name}`);
-        const body = encodeURIComponent(`${data.message}\n\n— ${data.name} (${data.email})`);
-        window.location.href = `mailto:${SITE.email}?subject=${subject}&body=${body}`;
-        setStatus({ kind: "ok", msg: `Thanks ${data.name.split(" ")[0]}! Your email app has opened with the message ready — just hit send.` });
-      }
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...data, website: (formRef.current?.elements.namedItem("website") as HTMLInputElement | null)?.value ?? "" }),
+      });
+      const json = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+      if (!res.ok || !json.ok) throw new Error(json.error || "Request failed");
+      setStatus({ kind: "ok", msg: `Thanks ${data.name.split(" ")[0]}! Your message was sent — I'll reply within 24–48 hours.` });
       setValues({ name: "", email: "", message: "" });
       setErrors({});
-    } catch {
-      setStatus({ kind: "err", msg: `Something went wrong sending your message. Please email me directly at ${SITE.email}.` });
+    } catch (err) {
+      const reason = err instanceof Error && err.message !== "Request failed" ? err.message + " " : "";
+      setStatus({ kind: "err", msg: `${reason}Something went wrong sending your message. Please email me directly at ${SITE.email}.` });
     } finally {
       setLoading(false);
     }
