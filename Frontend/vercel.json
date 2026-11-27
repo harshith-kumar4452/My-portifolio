@@ -1,31 +1,10 @@
 {
-  "framework": null,
-  "buildCommand": null,
-  "installCommand": null,
-  "outputDirectory": null,
-  "cleanUrls": true,
-  "trailingSlash": false,
+  "framework": "nextjs",
   "redirects": [
-    {
-      "source": "/Harshith_Resume.pdf",
-      "destination": "/assets/Harshith_Resume.pdf",
-      "permanent": true
-    },
-    {
-      "source": "/harshith.jpeg",
-      "destination": "/assets/img/harshith.jpg",
-      "permanent": true
-    }
+    { "source": "/Harshith_Resume.pdf", "destination": "/assets/Harshith_Resume.pdf", "permanent": true },
+    { "source": "/harshith.jpeg", "destination": "/assets/img/harshith.jpg", "permanent": true }
   ],
   "headers": [
-    {
-      "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=604800"
-        }
-      ]
-    }
+    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }] }
   ]
 }

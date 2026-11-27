@@ -1,0 +1,24 @@
+/* Tailwind v4 without its preflight reset, so the existing design system
+   (legacy.css) keeps rendering exactly as before. Utilities still win over it. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "./legacy.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* Site theme toggles via [data-theme], not the OS media query */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Expose the design tokens to Tailwind (bg-bg, text-muted, border-line, text-accent …) */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-card: var(--card);
+  --font-sans: var(--font);
+  --font-serif: var(--serif);
+  --font-mono: var(--mono);
+  --ease-site: var(--ease);
+}
